@@ -39,12 +39,12 @@ Once the dependencies are installed, you can run `meteor run` to start the appli
 
 ***
 ### **Packages Used**
-  [brain.js](https://brain.js.org/)
-  [moment.js](https://momentjs.com/)
-  [bootstrap3](https://getbootstrap.com/docs/3.3/)
-  [mongoDB](https://atmospherejs.com/meteor/mongo)
-  [flowRouter](https://atmospherejs.com/kadira/flow-router)
-  [hammer.js](https://hammerjs.github.io/)
+  * [brain.js](https://brain.js.org/)
+  * [moment.js](https://momentjs.com/)
+  * [bootstrap3](https://getbootstrap.com/docs/3.3/)
+  * [mongoDB](https://atmospherejs.com/meteor/mongo)
+  * [flowRouter](https://atmospherejs.com/kadira/flow-router)
+  * [hammer.js](https://hammerjs.github.io/)
 
 ***
 ### **License**
