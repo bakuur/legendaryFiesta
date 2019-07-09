@@ -4,6 +4,9 @@ Template.index.onCreated( function() {
 
 Template.index.onRendered(function () {
 
+
+
+
 });
 
 function motion(event){
@@ -39,7 +42,7 @@ function getTimestamp() {
 
 Template.index.helpers({
   _id : function(){
-    return id();
+    return window.navigator.userAgent;
   },
 });
 
