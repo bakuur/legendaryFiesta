@@ -16,6 +16,7 @@ A Neural Network implementation in JS using the MeteorJS stack that tells whethe
 * Break down the `/server` folder into smaller files
 * add https://jqueryvalidation.org/ to project
 * is hammer.js really needed?
+* add mup for easy deployment
 
 ***
 ### **Folder Tree**
