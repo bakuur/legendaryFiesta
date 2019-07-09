@@ -15,4 +15,3 @@ FlowRouter.route('/index', {
         BlazeLayout.render("layout", {content: "index"});
     }
 });
-

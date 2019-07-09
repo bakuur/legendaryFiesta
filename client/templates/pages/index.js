@@ -4,58 +4,19 @@ Template.index.onCreated( function() {
 
 Template.index.onRendered(function () {
 
-  //create listeners for mag and acc
-  if(window.DeviceMotionEvent){
-    window.addEventListener("devicemotion", motion, false);
-  }else{
-    $("#accelerationData").replaceWith("DeviceMotionEvent is not supported");
-  }
-
-  if(window.DeviceOrientationEvent){
-    window.addEventListener("deviceorientation", handleOrientation, true);
-  }else{
-    $("#deviceData").replaceWith("DeviceOrientationEvent is not supported");
-  }
-
-  //create listerner for touch
-  var myElement = document.getElementById('myElement');
-  // create a simple instance
-  var mc = new Hammer(myElement);
-  // listen to events...
-  mc.on("press", function(ev) {
-    $("#consoleInfo").append("<br>"+ev.type +" gesture detected.");
-  });
-
-  const options = { frequency: 60, referenceFrame: 'device' };
-  const sensor = new AbsoluteOrientationSensor(options);
-  Promise.all([navigator.permissions.query({ name: "accelerometer" }),
-  navigator.permissions.query({ name: "magnetometer" }),
-  navigator.permissions.query({ name: "gyroscope" })])
-  .then(results => {
-    if (results.every(result => result.state === "granted")) {
-
-      sensor.addEventListener('reading', () => {
-        // model is a Three.js object instantiated elsewhere.
-        $("#consoleInfo").append(sensor);
-      });
-      sensor.addEventListener('error', error => {
-        if (event.error.name == 'NotReadableError') {
-          console.log("Sensor is not available.");
-        }
-      });
-      sensor.start();
-
-    } else {
-      console.log("No permissions to use AbsoluteOrientationSensor.");
-    }
-  });
 });
 
 function motion(event){
-    $("#accelerationData").replaceWith("Accelerometer: "
-      + event.accelerationIncludingGravity.x + ", "
-      + event.accelerationIncludingGravity.y + ", "
-      + event.accelerationIncludingGravity.z);
+  //{input: { r: 0.03, g: 0.7, b: 0.5 }, output: { black: 1 }}
+    var accIncGravX = event.accelerationIncludingGravity.x;
+    var accIncGravY = event.accelerationIncludingGravity.y;
+    var accIncGravZ = event.accelerationIncludingGravity.z;
+    //var entry = JSON.stringify({ accIncGravX : accIncGravX, accIncGravY : accIncGravY, accIncGravZ : accIncGravZ})
+    $("#accelerationData").empty();
+    $("#accelerationData").prepend(
+        accIncGravX + ", "
+      + accIncGravY + ", "
+      + accIncGravZ);
 }
 
 function handleOrientation(event) {
@@ -64,12 +25,18 @@ function handleOrientation(event) {
     var beta     = event.beta;
     var gamma    = event.gamma;
     // Do stuff with the new orientation data
-    $("#deviceData").replaceWith("<br>Orientation: "
-      + absolute + ", "
-      + alpha + ", "
+    $("#deviceData").empty();
+    $("#deviceData").prepend(
+        alpha + ", "
       + beta + ", "
       + gamma);
 }
+
+function getTimestamp() {
+
+  return moment().format('MMMM Do YYYY, h:mm:ssa');
+}
+
 Template.index.helpers({
   _id : function(){
     return id();
@@ -78,8 +45,40 @@ Template.index.helpers({
 
 
 Template.index.events({
-  'change #testDropDown': function (event, template) {
+  'click #startBtn': function () {
+    var datetime = getTimestamp();
+    $("#consoleInfo").empty();
 
+    if(window.DeviceMotionEvent){
+      window.addEventListener("devicemotion", motion, false);
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceMotionEvent started");
+    }else{
+      $("#consoleInfo").prepend("<br[>" + datetime + "] DeviceMotionEvent is not supported");
+    }
+
+    if(window.DeviceOrientationEvent){
+      window.addEventListener("deviceorientation", handleOrientation, false);
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceOrientationEvent started");
+    }else{
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceOrientationEvent is not supported");
+    }
+  },
+  'click #stopBtn': function () {
+    var datetime = getTimestamp();
+
+    if(window.DeviceMotionEvent){
+      window.removeEventListener("devicemotion", motion, false);
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceMotionEvent stopped");
+    }else{
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceMotionEvent is not supported");
+    }
+
+    if(window.DeviceOrientationEvent){
+      window.removeEventListener("deviceorientation", handleOrientation, false);
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceOrientationEvent stopped");
+    }else{
+      $("#consoleInfo").prepend("<br>[" + datetime + "] DeviceOrientationEvent is not supported");
+    }
   }
 });
 

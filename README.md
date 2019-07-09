@@ -1,7 +1,7 @@
 # **Legendary Fiesta**
 ---
 
-A Neural Network implementation in JS using the MeteorJS stack that tells whether a user is sitting, walking or running from data collected and classified from the accelerometer and the gyroscope of mobile devices 
+A Neural Network implementation in JS using the MeteorJS stack that tells whether a user is sitting, walking or running from data collected and classified from the accelerometer and the gyroscope of mobile devices
 
 ***
 ### **Features**
@@ -12,10 +12,14 @@ A Neural Network implementation in JS using the MeteorJS stack that tells whethe
 
 ***
 ### **To-Do**
-* Collect Accelerometer Data.
-* Collect Gyro Data.
 * Store Data in MongoDB.
 * Break down the `/server` folder into smaller files
+* add https://jqueryvalidation.org/ to project
+* is hammer.js really needed?
+
+***
+### **Folder Tree**
+use this to generate a file Tree `ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'`
 
 ***
 ### **Setup**
@@ -34,7 +38,16 @@ Once the dependencies are installed, you can run `meteor run` to start the appli
 ### **Changelog**
 
 ***
+### **Packages Used**
+  [brain.js](https://brain.js.org/)
+  [moment.js](https://momentjs.com/)
+  [bootstrap3](https://getbootstrap.com/docs/3.3/)
+  [mongoDB](https://atmospherejs.com/meteor/mongo)
+  [flowRouter](https://atmospherejs.com/kadira/flow-router)
+  [hammer.js](https://hammerjs.github.io/)
+
+***
 ### **License**
-> You can check out the full license [here](https://github.com/IgorAntun/node-chat/blob/master/LICENSE)
+> You can check out the full license [here](https://github.com/bakuur/legendaryFiesta/blob/master/LICENSE)
 
 This project is licensed under the terms of the MIT license.

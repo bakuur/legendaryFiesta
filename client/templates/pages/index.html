@@ -1,20 +1,60 @@
 <template name="index">
-
-
         <div class="container-fluid" id="myElement">
 
             <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Console</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-xs-12 text-truncate" id="consoleInfo">
 
-                <div class="col-xs-12" id="accelerationData">
+                  </div>
                 </div>
-                <div class="col-xs-12" id="deviceData">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Acceleration Data</h3>
                 </div>
-                <div class="col-xs-12" id="consoleInfo">
+                <div class="panel-body">
+                  <div class="col-xs-12" id="accelerationData">
+                    <p>Can't find accelerometer data</p>
+                  </div>
                 </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Magnitometer Data</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-xs-12" id="deviceData">
+                    <p>Can't find device data</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  Status
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                  <li><a href="#">Sitting</a></li>
+                  <li><a href="#">Walking</a></li>
+                  <li><a href="#">Running</a></li>
+                </ul>
+                <button type="button" class="btn btn-success startBtn" id="startBtn">Start</button>
+                <button type="button" class="btn btn-danger" id="stopBtn">Stop</button>
+              </div>
             </div>
 
         </div>
-
-
-
 </template>

@@ -27,7 +27,6 @@ var processLineByLine = async function processLineByLine() {
 
 
 Meteor.startup(function () {
-
 //Something major is wrong here
   //processLineByLine();
 
@@ -71,8 +70,7 @@ Meteor.startup(function () {
       timeout: Infinity     // the max number of milliseconds to train for --> number greater than 0
     };
 
-  net.train(data, trainingConfig);
-
+  //net.train(data, trainingConfig);
   console.log("Training Complete");
 
 });
